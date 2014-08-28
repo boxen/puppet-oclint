@@ -7,6 +7,7 @@
 class oclint {
   $version = '0.7'
 
+
   package { 'wget':
       ensure => present
   }
@@ -18,21 +19,21 @@ class oclint {
 
   exec { 'Fetch oclint':
     cwd     => '/opt/boxen/cache',
-    command => "wget -O oclint-${version}.tar.gz http://archives.oclint.org/releases/0.7/oclint-${version}-x86_64-apple-darwin-10.tar.gz",
-    creates => "/opt/boxen/cache/oclint-${version}.tar.gz",
+    command => "wget http://archives.oclint.org/releases/0.7/oclint-${version}-x86_64-apple-darwin-10.tar.gz",
+    creates => "/opt/boxen/cache/oclint-${version}-x86_64-apple-darwin-10.tar.gz",
     path    => ['/opt/boxen/homebrew/bin'],
     require => Package['wget'];
   }
 
   exec { 'Extract oclint':
     cwd     => '/opt/boxen/cache',
-    command => "tar xvf /opt/boxen/cache/oclint-${version}.tar.gz",
-    creates => "/opt/boxen/cache/oclint-${version}",
+    command => "tar xvf /opt/boxen/cache/oclint-${version}-x86_64-apple-darwin-10.tar.gz",
+    creates => "/opt/boxen/cache/oclint-${version}-x86_64-apple-darwin-10",
     path    => ['/usr/bin'],
     require => Exec['Fetch oclint'];
   }
 
-  file { "/opt/boxen/cache/oclint-${version}":
+  file { "/opt/boxen/cache/oclint-${version}-x86_64-apple-darwin-10":
     require => Exec['Extract oclint'];
   }
 
@@ -42,14 +43,14 @@ class oclint {
 
   exec { 'Extract oclint libraries':
     cwd     => '/usr/local',
-    command => "cp -rp /opt/boxen/cache/oclint-${version}/lib/* /usr/local/lib/",
+    command => "cp -rp /opt/boxen/cache/oclint-${version}-x86_64-apple-darwin-10/lib/* /usr/local/lib/",
     onlyif  => [
                 'test ! -d /usr/local/lib/oclint',
                 'test ! -d /usr/local/lib/clang',
               ],
     path    => ['/bin'],
     require => [
-      File["/opt/boxen/cache/oclint-${version}"],
+      File["/opt/boxen/cache/oclint-${version}-x86_64-apple-darwin-10"],
       File["/usr/local/lib"]
     ];
   }
@@ -60,11 +61,11 @@ class oclint {
 
   exec { 'Extract oclint bin files':
     cwd     => '/usr/local',
-    command => "cp -rp /opt/boxen/cache/oclint-${version}/bin/* /usr/local/bin/",
+    command => "cp -rp /opt/boxen/cache/oclint-${version}-x86_64-apple-darwin-10/bin/* /usr/local/bin/",
     creates => '/usr/local/bin/oclint',
     path    => ['/bin'],
     require => [
-      File["/opt/boxen/cache/oclint-${version}"],
+      File["/opt/boxen/cache/oclint-${version}-x86_64-apple-darwin-10"],
       File["/usr/local/bin"],
     ];
   }
