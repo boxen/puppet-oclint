@@ -38,7 +38,7 @@ class oclint {
                 'test ! -d /usr/local/lib/oclint',
                 'test ! -d /usr/local/lib/clang',
               ],
-    path    => ['/usr/bin'],
+    path    => ['/bin'],
     require => File["/opt/boxen/cache/oclint-${version}"];
   }
 
@@ -46,7 +46,7 @@ class oclint {
     cwd     => '/usr/local',
     command => "cp -rp /opt/boxen/cache/oclint-${version}/bin/* /usr/local/bin/",
     creates => '/usr/local/bin/oclint',
-    path    => ['/usr/bin'],
+    path    => ['/bin'],
     require => File["/opt/boxen/cache/oclint-${version}"];
   }
 }
