@@ -6,6 +6,7 @@
 #
 class oclint {
   $version = '0.7'
+  require wget
 
   file { "/opt/boxen/cache/oclint-${version}-x86_64-apple-darwin-10.tar.gz":
     ensure  => present,
