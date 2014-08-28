@@ -1,4 +1,9 @@
-# OCLint for boxen
+# Public: Install OCLint for osx
+#
+# Examples
+#
+#  include oclint
+#
 class oclint {
   $version = '0.7'
 
