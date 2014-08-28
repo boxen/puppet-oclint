@@ -6,7 +6,10 @@
 #
 class oclint {
   $version = '0.7'
-  require wget
+
+  package { 'wget':
+      ensure => present
+  }
 
   file { "/opt/boxen/cache/oclint-${version}-x86_64-apple-darwin-10.tar.gz":
     ensure  => present,
@@ -17,7 +20,8 @@ class oclint {
     cwd     => '/opt/boxen/cache',
     command => "wget -O oclint-${version}.tar.gz http://archives.oclint.org/releases/0.7/oclint-${version}-x86_64-apple-darwin-10.tar.gz",
     creates => "/opt/boxen/cache/oclint-${version}.tar.gz",
-    path    => ['/opt/boxen/homebrew/bin'];
+    path    => ['/opt/boxen/homebrew/bin'],
+    require => Package['wget'];
   }
 
   exec { 'Extract oclint':
