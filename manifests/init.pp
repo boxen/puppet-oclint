@@ -16,13 +16,6 @@ class oclint {
     require => Exec['Fetch oclint'],
   }
 
-  file { [  $user_bin_dir,
-            $code_current_dir, $code_company_dir, $code_family_dir,
-            $code_archived_dir, $code_personal_dir,
-            $ferocia_directory ]:
-    ensure => "directory"
-  }
-
   exec { 'Fetch oclint':
     cwd     => '/opt/boxen/cache',
     command => "wget -O oclint-${version}.tar.gz http://archives.oclint.org/releases/0.7/oclint-${version}-x86_64-apple-darwin-10.tar.gz",
