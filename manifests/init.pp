@@ -16,6 +16,13 @@ class oclint {
     require => Exec['Fetch oclint'],
   }
 
+  file { [  $user_bin_dir,
+            $code_current_dir, $code_company_dir, $code_family_dir,
+            $code_archived_dir, $code_personal_dir,
+            $ferocia_directory ]:
+    ensure => "directory"
+  }
+
   exec { 'Fetch oclint':
     cwd     => '/opt/boxen/cache',
     command => "wget -O oclint-${version}.tar.gz http://archives.oclint.org/releases/0.7/oclint-${version}-x86_64-apple-darwin-10.tar.gz",
@@ -36,6 +43,10 @@ class oclint {
     require => Exec['Extract oclint'];
   }
 
+  file { "/usr/local/lib":
+    ensure => "directory"
+  }
+
   exec { 'Extract oclint libraries':
     cwd     => '/usr/local',
     command => "cp -rp /opt/boxen/cache/oclint-${version}/lib/* /usr/local/lib/",
@@ -44,7 +55,14 @@ class oclint {
                 'test ! -d /usr/local/lib/clang',
               ],
     path    => ['/bin'],
-    require => File["/opt/boxen/cache/oclint-${version}"];
+    require => [
+      File["/opt/boxen/cache/oclint-${version}"],
+      File["/usr/local/lib"]
+    ];
+  }
+
+  file { "/usr/local/bin":
+    ensure => "directory"
   }
 
   exec { 'Extract oclint bin files':
@@ -52,6 +70,9 @@ class oclint {
     command => "cp -rp /opt/boxen/cache/oclint-${version}/bin/* /usr/local/bin/",
     creates => '/usr/local/bin/oclint',
     path    => ['/bin'],
-    require => File["/opt/boxen/cache/oclint-${version}"];
+    require => [
+      File["/opt/boxen/cache/oclint-${version}"],
+      File["/usr/local/bin"],
+    ];
   }
 }
