@@ -6,8 +6,9 @@
 #
 # To Delete:
 # rm -rf /usr/local/bin/oclint* /usr/local/lib/oclint* /usr/local/lib/clang /opt/boxen/cache/oclint-0.9*
-class oclint::dev {
-  $version  = '0.9'
+class oclint::dev (
+  $version = '0.9'
+ ) {
   $folder   = "oclint-${version}.dev.5f3418c"
   $filename = "oclint-${version}.dev.5f3418c-x86_64-darwin-13.3.0.tar.gz"
   $download_url = "http://archives.oclint.org/nightly/${filename}"
