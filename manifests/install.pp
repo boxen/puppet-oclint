@@ -7,6 +7,11 @@
 #  }
 define oclint::install ($version) {
   case $version {
+    '0.6': {
+      $folder   = "oclint-${version}-x86_64-apple-darwin12"
+      $filename = "oclint-${version}-x86_64-apple-darwin12.tar.gz"
+      $download_url = "http://archives.oclint.org/releases/${version}/${filename}"
+    }
     '0.7': {
       $folder   = "oclint-${version}-x86_64-apple-darwin-10"
       $filename = "oclint-${version}-x86_64-apple-darwin-10.tar.gz"
