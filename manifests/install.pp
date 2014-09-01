@@ -18,12 +18,12 @@ define oclint::install ($version) {
       $download_url = "http://archives.oclint.org/nightly/${filename}"
     }
     default: {
-      fail("Unknown OCLint version: only aware of 0.7(stable) & 0.9(dev)")
+      fail('Unknown OCLint version: only aware of 0.7(stable) & 0.9(dev)')
     }
   }
 
-  $lib_directory = "/usr/local/lib"
-  $bin_directory = "/usr/local/bin"
+  $lib_directory = '/usr/local/lib'
+  $bin_directory = '/usr/local/bin'
 
   ensure_packages(['wget'])
 
@@ -48,7 +48,7 @@ define oclint::install ($version) {
     require => Exec["Fetch oclint from ${download_url}"];
   }
 
-  file { "${folder}":
+  file { $folder:
     require => Exec["Extract oclint from ${filename}"];
   }
 
@@ -63,8 +63,8 @@ define oclint::install ($version) {
               ],
     path    => ['/bin'],
     require => [
-      File["${folder}"],
-      File["/usr/local/lib"]
+      File[$folder],
+      File[$lib_directory]
     ];
   }
 
@@ -77,7 +77,7 @@ define oclint::install ($version) {
     path    => ['/bin'],
     require => [
       File["/opt/boxen/cache/${folder}"],
-      File["/usr/local/bin"],
+      File[$bin_directory],
     ];
   }
 }
