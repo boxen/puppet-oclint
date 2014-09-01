@@ -100,4 +100,20 @@ describe 'oclint::install' do
       let(:url)      { "http://archives.oclint.org/releases/#{version}/#{filename}" }
     end
   end
+
+  context "installing an unknown version" do
+    let(:version)         { "0.10" }
+    let(:expected_error)  { "Unknown OCLint version: only aware of 0.7(stable) & 0.9(dev)" }
+    let(:params) do
+      {
+        :version    => version
+      }
+    end
+
+    it do
+      expect {
+        should compile
+      }.to raise_error(Puppet::Error, /#{Regexp.escape(expected_error)}/)
+    end
+  end
 end
