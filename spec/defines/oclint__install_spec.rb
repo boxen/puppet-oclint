@@ -30,10 +30,6 @@ describe 'oclint::install' do
         :require => "Exec[Fetch oclint from #{url}]"
       })
 
-      should contain_file(folder).with({
-        :require => "Exec[Extract oclint from #{filename}]"
-      })
-
       should contain_file("/usr/local/lib").with({
         :ensure  => "directory"
       })
@@ -47,7 +43,7 @@ describe 'oclint::install' do
         ],
         :path    => ['/bin'],
         :require => [
-          "File[#{folder}]",
+          "Exec[Extract oclint from #{filename}]",
           "File[/usr/local/lib]"
         ]
       })
@@ -62,7 +58,7 @@ describe 'oclint::install' do
         :creates => '/usr/local/bin/oclint',
         :path    => ['/bin'],
         :require => [
-          "File[/opt/boxen/cache/#{folder}]",
+          "Exec[Extract oclint from #{filename}]",
           "File[/usr/local/bin]",
         ]
       })

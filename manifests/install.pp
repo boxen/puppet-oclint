@@ -48,10 +48,6 @@ define oclint::install ($version) {
     require => Exec["Fetch oclint from ${download_url}"];
   }
 
-  file { $folder:
-    require => Exec["Extract oclint from ${filename}"];
-  }
-
   ensure_resource('file', $lib_directory, {'ensure' => 'directory' })
 
   exec { "Extract oclint libraries from ${folder}":
@@ -63,7 +59,7 @@ define oclint::install ($version) {
               ],
     path    => ['/bin'],
     require => [
-      File[$folder],
+      Exec["Extract oclint from ${filename}"],
       File[$lib_directory]
     ];
   }
@@ -76,7 +72,7 @@ define oclint::install ($version) {
     creates => '/usr/local/bin/oclint',
     path    => ['/bin'],
     require => [
-      File["/opt/boxen/cache/${folder}"],
+      Exec["Extract oclint from ${filename}"],
       File[$bin_directory],
     ];
   }
