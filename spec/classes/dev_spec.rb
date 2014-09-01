@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'oclint::dev' do
   context "with no version set" do
     it do
-      should contain_oclint__install('development version').with({version: '0.9'})
+      should contain_oclint__install('development version').with({:version => '0.9'})
     end
   end
 
@@ -11,7 +11,7 @@ describe 'oclint::dev' do
     let(:params) { { :version => "0.7" } }
 
     it do
-      should contain_oclint__install('development version').with({version: '0.7'})
+      should contain_oclint__install('development version').with({:version => '0.7'})
     end
   end
 
@@ -19,7 +19,7 @@ describe 'oclint::dev' do
     let(:params) { { :version => "0.9" } }
 
     it do
-      should contain_oclint__install('development version').with({version: '0.9'})
+      should contain_oclint__install('development version').with({:version => '0.9'})
     end
   end
 end

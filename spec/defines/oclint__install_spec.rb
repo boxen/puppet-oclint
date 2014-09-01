@@ -4,7 +4,7 @@ describe 'oclint::install' do
   let(:title) { '/tmp/test' }
 
   shared_examples "being able to install a version of oclint" do
-    let(:params)   { { version: version } }
+    let(:params)   { { :version => version } }
 
     it do
       should contain_package('wget').with({ :ensure => 'present' })
