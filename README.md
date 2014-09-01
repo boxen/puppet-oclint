@@ -2,6 +2,8 @@
 
 Install OSX package for [OCLint](http://oclint.org/)
 
+[![Build Status](https://travis-ci.org/boxen/puppet-oclint.svg?branch=master)](https://travis-ci.org/tommeier/puppet-oclint)
+
 ## Usage
 
 ```puppet
