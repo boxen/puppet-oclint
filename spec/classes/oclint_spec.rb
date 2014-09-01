@@ -1,12 +1,25 @@
 require 'spec_helper'
 
 describe 'oclint' do
-  it { should compile }
+  context "with no version set" do
+    it do
+      should contain_oclint__install('stable version').with({version: '0.7'})
+    end
+  end
 
-  it do
-    should contain_package('oclint').with(
-      'provider'   => 'compressed_appng',
-      'source'     => 'http://archives.oclint.org/releases/0.7/oclint-0.7-x86_64-apple-darwin-10.tar.gz'
-    )
+  context "with stable version set" do
+    let(:params) { { :version => "0.7" } }
+
+    it do
+      should contain_oclint__install('stable version').with({version: '0.7'})
+    end
+  end
+
+  context "with dev version set" do
+    let(:params) { { :version => "0.9" } }
+
+    it do
+      should contain_oclint__install('stable version').with({version: '0.9'})
+    end
   end
 end
