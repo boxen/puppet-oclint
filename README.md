@@ -1,10 +1,8 @@
 # OCLint Puppet Module for Boxen
 
-** note: now managed on [boxen fork](https://github.com/boxen/puppet-oclint) **
-
 Install OSX package for [OCLint](http://oclint.org/)
 
-[![Build Status](https://travis-ci.org/boxen/puppet-oclint.svg?branch=master)](https://travis-ci.org/tommeier/puppet-oclint)
+[![Build Status](https://travis-ci.org/boxen/puppet-oclint.svg?branch=master)](https://travis-ci.org/boxen/puppet-oclint)
 
 ## Usage
 
