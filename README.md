@@ -1,6 +1,6 @@
 # OCLint Puppet Module for Boxen
 
-** note: now managed on [boxen fork](https://github.com/boxen/puppet-oclint) **
+***note: now managed on [boxen fork](https://github.com/boxen/puppet-oclint)***
 
 Install OSX package for [OCLint](http://oclint.org/)
 
