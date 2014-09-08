@@ -27,8 +27,9 @@ define oclint::install ($version) {
     }
   }
 
-  $lib_directory = '/usr/local/lib'
-  $bin_directory = '/usr/local/bin'
+  $local_directory  = '/usr/local'
+  $lib_directory    = "${local_directory}/lib"
+  $bin_directory    = "${local_directory}/bin"
 
   ensure_packages(['wget'])
 
@@ -53,18 +54,20 @@ define oclint::install ($version) {
     require => Exec["Fetch oclint from ${download_url}"];
   }
 
+  ensure_resource('file', $local_directory, {'ensure' => 'directory' })
   ensure_resource('file', $lib_directory, {'ensure' => 'directory' })
 
   exec { "Extract oclint libraries from ${folder}":
-    cwd     => '/usr/local',
-    command => "cp -rp /opt/boxen/cache/${folder}/lib/* /usr/local/lib/",
+    cwd     => $local_directory,
+    command => "cp -rp /opt/boxen/cache/${folder}/lib/* ${local_directory}/lib/",
     onlyif  => [
-                'test ! -d /usr/local/lib/oclint',
-                'test ! -d /usr/local/lib/clang',
+                "test ! -d ${local_directory}/lib/oclint",
+                "test ! -d ${local_directory}/lib/clang",
               ],
     path    => ['/bin'],
     require => [
       Exec["Extract oclint from ${filename}"],
+      File[$local_directory],
       File[$lib_directory]
     ];
   }
@@ -72,12 +75,13 @@ define oclint::install ($version) {
   ensure_resource('file', $bin_directory, {'ensure' => 'directory' })
 
   exec { "Extract oclint bin files from ${folder}":
-    cwd     => '/usr/local',
-    command => "cp -rp /opt/boxen/cache/${folder}/bin/* /usr/local/bin/",
-    creates => '/usr/local/bin/oclint',
+    cwd     => $local_directory,
+    command => "cp -rp /opt/boxen/cache/${folder}/bin/* ${local_directory}/bin/",
+    creates => "${local_directory}/bin/oclint",
     path    => ['/bin'],
     require => [
       Exec["Extract oclint from ${filename}"],
+      File[$local_directory],
       File[$bin_directory],
     ];
   }

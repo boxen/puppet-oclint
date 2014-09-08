@@ -44,6 +44,7 @@ describe 'oclint::install' do
         :path    => ['/bin'],
         :require => [
           "Exec[Extract oclint from #{filename}]",
+          "File[/usr/local]",
           "File[/usr/local/lib]"
         ]
       })
@@ -59,6 +60,7 @@ describe 'oclint::install' do
         :path    => ['/bin'],
         :require => [
           "Exec[Extract oclint from #{filename}]",
+          "File[/usr/local]",
           "File[/usr/local/bin]",
         ]
       })
