@@ -18,8 +18,8 @@ define oclint::install ($version) {
       $download_url = "http://archives.oclint.org/releases/${version}/${filename}"
     }
     '0.9': {
-      $folder   = "oclint-${version}.dev.5dba345"
-      $filename = "oclint-${version}.dev.5dba345-x86_64-darwin-13.3.0.tar.gz"
+      $folder   = "oclint-${version}.dev.6fd153f"
+      $filename = "oclint-${version}.dev.6fd153f-x86_64-darwin-13.3.0.tar.gz"
       $download_url = "http://archives.oclint.org/nightly/${filename}"
     }
     default: {
