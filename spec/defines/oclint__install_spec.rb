@@ -84,7 +84,7 @@ describe 'oclint::install' do
   end
 
   context "installing the stable version" do
-    let(:version)  { "0.8" }
+    let(:version)  { "0.8.1" }
     let(:params) do
       {
         :version    => version
@@ -92,9 +92,9 @@ describe 'oclint::install' do
     end
 
     it_should_behave_like 'being able to install a version of oclint' do
-      let(:version)  { "0.8" }
-      let(:folder)   { "oclint-#{version}-x86_64-apple-darwin-10" }
-      let(:filename) { "oclint-#{version}-x86_64-apple-darwin-10.tar.gz" }
+      let(:version)  { "0.8.1" }
+      let(:folder)   { "oclint-#{version}-x86_64-apple-darwin-14.0.0" }
+      let(:filename) { "oclint-#{version}-x86_64-apple-darwin-14.0.0.tar.gz" }
       let(:url)      { "http://archives.oclint.org/releases/#{version}/#{filename}" }
     end
   end
@@ -117,7 +117,7 @@ describe 'oclint::install' do
 
   context "installing an unknown version" do
     let(:version)         { "0.10" }
-    let(:expected_error)  { "Unknown OCLint version: only aware of 0.8(stable) & 0.9(dev)" }
+    let(:expected_error)  { "Unknown OCLint version: only aware of 0.8.1(stable) & 0.9(dev)" }
     let(:params) do
       {
         :version    => version
