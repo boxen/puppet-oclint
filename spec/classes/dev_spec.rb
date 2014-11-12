@@ -8,10 +8,10 @@ describe 'oclint::dev' do
   end
 
   context "with stable version set" do
-    let(:params) { { :version => "0.7" } }
+    let(:params) { { :version => "0.8" } }
 
     it do
-      should contain_oclint__install('development version').with({:version => '0.7'})
+      should contain_oclint__install('development version').with({:version => '0.8'})
     end
   end
 
