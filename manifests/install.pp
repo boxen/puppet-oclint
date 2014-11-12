@@ -14,8 +14,8 @@ define oclint::install ($version) {
     }
     '0.8.1': {
       $base_version = "0.8"
-      $folder   = "oclint-${version}-x86_64-apple-darwin-14.0.0"
-      $filename = "oclint-${version}-x86_64-apple-darwin-14.0.0.tar.gz"
+      $folder   = "oclint-${version}-x86_64-darwin-14.0.0"
+      $filename = "oclint-${version}-x86_64-darwin-14.0.0.tar.gz"
       $download_url = "http://archives.oclint.org/releases/${base_version}/${filename}"
     }
     '0.9': {
