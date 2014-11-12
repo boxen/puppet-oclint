@@ -94,7 +94,7 @@ describe 'oclint::install' do
     it_should_behave_like 'being able to install a version of oclint' do
       let(:version)       { "0.8.1" }
       let(:base_version)  { "0.8" }
-      let(:folder)        { "oclint-#{version}-x86_64-darwin-14.0.0" }
+      let(:folder)        { "oclint-#{version}" }
       let(:filename)      { "oclint-#{version}-x86_64-darwin-14.0.0.tar.gz" }
       let(:url)           { "http://archives.oclint.org/releases/#{base_version}/#{filename}" }
     end
