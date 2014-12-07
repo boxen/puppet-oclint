@@ -12,10 +12,11 @@ define oclint::install ($version) {
       $filename = "oclint-${version}-x86_64-apple-darwin12.tar.gz"
       $download_url = "http://archives.oclint.org/releases/${version}/${filename}"
     }
-    '0.7': {
-      $folder   = "oclint-${version}-x86_64-apple-darwin-10"
-      $filename = "oclint-${version}-x86_64-apple-darwin-10.tar.gz"
-      $download_url = "http://archives.oclint.org/releases/${version}/${filename}"
+    '0.8.1': {
+      $base_version = '0.8'
+      $folder   = "oclint-${version}"
+      $filename = "oclint-${version}-x86_64-darwin-14.0.0.tar.gz"
+      $download_url = "http://archives.oclint.org/releases/${base_version}/${filename}"
     }
     '0.9': {
       $folder   = "oclint-${version}.dev.6fd153f"
@@ -23,7 +24,7 @@ define oclint::install ($version) {
       $download_url = "http://archives.oclint.org/nightly/${filename}"
     }
     default: {
-      fail('Unknown OCLint version: only aware of 0.7(stable) & 0.9(dev)')
+      fail('Unknown OCLint version: only aware of 0.8.1(stable) & 0.9(dev)')
     }
   }
 
