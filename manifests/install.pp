@@ -24,8 +24,8 @@ define oclint::install ($version) {
       $download_url = "http://archives.oclint.org/releases/${base_version}/${filename}"
     }
     '0.9': {
-      $folder   = "oclint-${version}.dev.02251e4"
-      $filename = "oclint-${version}.dev.02251e4-x86_64-darwin-14.0.0.tar.gz"
+      $folder   = "oclint-${version}.dev.603daa8"
+      $filename = "oclint-${version}.dev.603daa8-x86_64-darwin-14.4.0.tar.gz"
       $download_url = "http://archives.oclint.org/nightly/${filename}"
     }
     default: {
