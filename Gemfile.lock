@@ -68,11 +68,9 @@ GEM
     rspec-puppet (1.0.1)
       rspec
     rspec-support (3.3.0)
-    safe_yaml (1.0.4)
     sawyer (0.5.5)
       addressable (~> 2.3.5)
       faraday (~> 0.8, < 0.10)
-    syck (1.0.5)
     thor (0.19.1)
 
 PLATFORMS
@@ -80,5 +78,3 @@ PLATFORMS
 
 DEPENDENCIES
   cardboard (~> 2.1)
-  safe_yaml
-  syck
