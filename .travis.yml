@@ -1,7 +1,0 @@
----
-language: ruby
-script: "./script/cibuild"
-gemfile: "this/does/not/exist"
-rvm:
-  - "2.0.0"
-  - "2.2.0"
